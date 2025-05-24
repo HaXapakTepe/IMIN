@@ -1,0 +1,89 @@
+.btn {
+	position: relative;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+	display: block;
+	padding: 19.5px 60px;
+	background-color: transparent;
+	color: #fff;
+	font-weight: 700;
+    font-size: 16px;
+	text-align: center;
+	white-space: nowrap;
+	border-radius: 99px;
+	text-decoration: none;
+	border: 1px solid #fff;
+	cursor: pointer;
+	overflow: hidden;
+
+	&--blue {
+		background-color: #0043a4;
+		border-color: #0043a4;
+	}
+
+	&--center {
+		margin-left: auto;
+		margin-right: auto;
+		min-width: 206px;
+	}
+
+	&--small {
+		padding: 6px 15px;
+		font-size: 13px;
+	}
+
+	&--effects {
+		&::after {
+			content: '';
+			position: absolute;
+			height: 350%;
+			width: 200%;
+			top: 0;
+			left: -100%;
+			background: rgba(255, 255, 255, 0.8);
+			border-radius: 100%;
+			transform: scale(0);
+			z-index: 20;
+			-webkit-animation-name: ripple;
+			animation-name: ripple;
+			-webkit-animation-duration: 6s;
+			animation-duration: 6s;
+			-webkit-animation-timing-function: linear;
+			animation-timing-function: linear;
+			-webkit-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+		}
+	}
+}
+
+@-webkit-keyframes ripple {
+	20% {
+		opacity: 0;
+		transform: scale(2.5);
+	}
+
+	100% {
+		opacity: 0;
+		transform: scale(2.5);
+	}
+}
+
+@keyframes ripple {
+	20% {
+		opacity: 0;
+		transform: scale(2.5);
+	}
+
+	100% {
+		opacity: 0;
+		transform: scale(2.5);
+	}
+}
+
+@media (max-width: 992px) {
+	.btn {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}

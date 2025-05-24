@@ -1,0 +1,23 @@
+.up {
+	max-width: 250px;
+	display: flex;
+    align-items: center;
+	gap: 6px;
+
+	&__text {
+		text-align: right;
+		font-weight: 600;
+        font-size: 14px;
+	}
+}
+
+@media (max-width: 992px) {
+	.up {
+		max-width: unset;
+
+		&__text {
+			font-size: 12px;
+			text-align: center;
+		}
+	}
+}

@@ -1,0 +1,58 @@
+.assortment {
+	&__inner {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+		gap: 90px 40px;
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		&-img {
+			-o-object-fit: cover;
+			object-fit: cover;
+			border-radius: 15px;
+			margin-bottom: 20px;
+		}
+
+		&-price,
+		&-title {
+			font-weight: 600;
+			font-size: 20px;
+			line-height: 1.35;
+			text-align: center;
+		}
+
+		&-price {
+			margin-bottom: 8px;
+			color: #0043a4;
+		}
+
+		&-text {
+			font-size: 14px;
+			line-height: 1.55;
+			text-align: center;
+		}
+	}
+}
+
+@media (max-width: 992px) {
+	.assortment {
+		&__inner {
+			gap: 60px;
+		}
+
+		&__item {
+			&-title,
+			&-price {
+				font-size: 16px;
+			}
+
+			&-text {
+				font-size: 12px;
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+.accordionIndex, 
+.accordionPrev, 
+.accordionNext, 
+.accordion {
+	&-content,
+	&__content {
+		overflow: hidden;
+		max-height: 0;
+		transition: max-height 0.23s ease-in-out;
+
+		&--pos {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			min-width: 100%;
+			z-index: 10;
+		}
+	}
+}

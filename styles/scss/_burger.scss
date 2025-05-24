@@ -1,0 +1,81 @@
+.burger {
+	display: none;
+}
+
+@media (max-width: 992px) {
+	.burger {
+		position: relative;
+		width: 28px;
+		height: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-left: auto;
+		z-index: 5;
+		cursor: pointer;
+
+		&__line {
+			&:first-child,
+			&:last-child {
+				position: absolute;
+				width: 28px;
+				height: 3px;
+
+				&::before,
+				&::after {
+					content: '';
+					position: absolute;
+					left: 50%;
+					width: 28px;
+					height: 3px;
+					background-color: #000;
+					transition: transform 0.23s ease-in-out, background-color 0.23s ease-in-out, width 0.23s ease-in-out;
+				}
+			}
+            
+			&:first-child {
+				&::before {
+					transform: translateX(-50%) translateY(-8px);
+				}
+
+				&::after {
+					transform: translateX(-50%) translateY(8px);
+				}
+			}
+
+			&:last-child {
+				&::before {
+					transform: translateX(-50%);
+				}
+
+				&::after {
+					transform: translateX(-50%);
+				}
+			}
+		}
+
+		&--active {
+			.burger {
+				&__line {
+					&:first-child {
+						&::after,
+						&::before {
+							width: 0;
+							transform: translate(-50%, 0);
+						}
+					}
+
+					&:last-child {
+						&::before {
+							transform: translateX(-50%) rotate(45deg);
+						}
+
+						&::after {
+							transform: translateX(-50%) rotate(-45deg);
+						}
+					}
+				}
+			}
+		}
+	}
+}
