@@ -2,8 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	const header = document.querySelector('.header')
 	const body = document.querySelector('body')
 	const burger = document.querySelector('.burger')
-	const menu = document.querySelectorAll('.menu')
+	const menu = document.querySelector('.menu')
 	const up = document.querySelector('.up')
+	const info = document.querySelector('.info')
 
 	let isLoaded = false
 	function loadCSS(url) {
@@ -28,20 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.body.appendChild(script)
 	}
 
-	// loadCSS('https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css')
 	loadCSS('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css')
 
 	function handleFirstInteraction() {
 		if (isLoaded) return
 		isLoaded = true
-
-		// loadJS('https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', function () {
-		// 	if (typeof Fancybox !== 'undefined') {
-		// 		Fancybox.bind('[data-fancybox]', {
-		// 			Hash: false,
-		// 		})
-		// 	}
-		// })
 
 		loadJS('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', function () {
 			if (typeof Swiper !== 'undefined') {
@@ -115,21 +107,17 @@ document.addEventListener('DOMContentLoaded', () => {
 	// menu
 	if (menu) {
 		const toggleMenu = () => {
-			menu.forEach(item => {
-				item.classList.toggle('menu--active')
-			})
+			menu.classList.toggle('menu--active')
 			burger.classList.toggle('burger--active')
 			body.classList.toggle('no-scroll')
 		}
 
 		const clickOutsideMenu = event => {
-			menu.forEach(item => {
-				if (!item.contains(event.target) && !burger.contains(event.target)) {
-					item.classList.remove('menu--active')
-					burger.classList.remove('burger--active')
-					body.classList.remove('no-scroll')
-				}
-			})
+			if (!menu.contains(event.target) && !burger.contains(event.target)) {
+				menu.classList.remove('menu--active')
+				burger.classList.remove('burger--active')
+				body.classList.remove('no-scroll')
+			}
 		}
 
 		burger.addEventListener('click', toggleMenu)
@@ -138,6 +126,28 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (innerWidth < 993) {
 			burger.classList.remove('accordionIndex--active')
 		}
+	}
+
+	if (info) {
+		const infoItem = document.querySelectorAll('.info__item')
+
+		infoItem.forEach(item => {
+			const btn = item.querySelector('.showModal')
+			const close = item.querySelector('.info__modal-close')
+			const modal = item.querySelector('.info__modal')
+
+			btn?.addEventListener('click', e => {
+				modal?.classList.add('info__modal--active')
+				setTimeout(() => {
+					body.classList.add('no-scroll')
+				}, 100)
+			})
+
+			close?.addEventListener('click', e => {
+				body.classList.remove('no-scroll')
+				modal?.classList.remove('info__modal--active')
+			})
+		})
 	}
 
 	// accordionIndex
