@@ -17,13 +17,16 @@
 		position: relative;
 		padding: 38px 20px;
 	}
-
-	.accordionIndex-content {
-		overflow: unset;
-		max-height: unset;
-	}
 }
 
+@media (min-width: 992px) {
+	.header {
+		.accordionIndex-content {
+			overflow: unset;
+			max-height: unset;
+		}
+	}
+}
 @media (max-width: 992px) {
 	.header {
 		position: static;

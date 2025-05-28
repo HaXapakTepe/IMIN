@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const body = document.querySelector('body')
 	const burger = document.querySelector('.burger')
 	const menu = document.querySelector('.menu')
+	const menuItem = document.querySelectorAll('.menu__list-item')
 	const up = document.querySelector('.up')
 	const info = document.querySelector('.info')
 
@@ -112,16 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
 			body.classList.toggle('no-scroll')
 		}
 
-		const clickOutsideMenu = event => {
-			if (!menu.contains(event.target) && !burger.contains(event.target)) {
-				menu.classList.remove('menu--active')
-				burger.classList.remove('burger--active')
-				body.classList.remove('no-scroll')
-			}
-		}
+		// const clickOutsideMenu = event => {
+		// if (!menu.contains(event.target) && !burger.contains(event.target)) {
+		// menu.classList.remove('menu--active')
+		// burger.classList.remove('burger--active')
+		// body.classList.remove('no-scroll')
+		// }
+		// }
 
 		burger.addEventListener('click', toggleMenu)
-		document.addEventListener('click', clickOutsideMenu)
+		menuItem.forEach(item => {
+			item.addEventListener('click', () => {
+				body.classList.remove('no-scroll')
+			})
+		})
+		// document.addEventListener('click', clickOutsideMenu)
 
 		if (innerWidth < 993) {
 			burger.classList.remove('accordionIndex--active')
@@ -152,10 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// accordionIndex
 	function initAccordion() {
-		const accordionIndexes = document.querySelectorAll('.accordionIndex')
+		const accordionIndex = document.querySelectorAll('.accordionIndex')
 		const accordionIndexContents = document.querySelectorAll('.accordionIndex-content')
 
-		accordionIndexes.forEach((accordion, index) => {
+		accordionIndex.forEach((accordion, index) => {
 			const content = accordionIndexContents[index]
 
 			if (accordion.classList.contains('accordionIndex--active')) {
@@ -179,8 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	initAccordion()
 
 	// Smooth scrolling to target element with header offset
-	const headerOffset = document.querySelector('header').offsetHeight
-
 	function smoothScroll(event) {
 		event.preventDefault()
 
@@ -188,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const targetElement = document.getElementById(targetId)
 
 		if (targetElement) {
-			const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset
+			const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset
 			window.scrollTo({
 				top: elementPosition,
 				behavior: 'smooth',
