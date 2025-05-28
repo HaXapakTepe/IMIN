@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	const body = document.querySelector('body')
 	const burger = document.querySelector('.burger')
 	const menu = document.querySelector('.menu')
-	const menuItem = document.querySelectorAll('.menu__list-item')
 	const up = document.querySelector('.up')
 	const info = document.querySelector('.info')
 
@@ -110,24 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		const toggleMenu = () => {
 			menu.classList.toggle('menu--active')
 			burger.classList.toggle('burger--active')
-			body.classList.toggle('no-scroll')
 		}
 
-		// const clickOutsideMenu = event => {
-		// if (!menu.contains(event.target) && !burger.contains(event.target)) {
-		// menu.classList.remove('menu--active')
-		// burger.classList.remove('burger--active')
-		// body.classList.remove('no-scroll')
-		// }
-		// }
-
 		burger.addEventListener('click', toggleMenu)
-		menuItem.forEach(item => {
-			item.addEventListener('click', () => {
-				body.classList.remove('no-scroll')
-			})
-		})
-		// document.addEventListener('click', clickOutsideMenu)
 
 		if (innerWidth < 993) {
 			burger.classList.remove('accordionIndex--active')
